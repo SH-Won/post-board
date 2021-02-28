@@ -31,7 +31,8 @@ function SingleComment(props) {
         setCommentValue('');
         setOpenReply(!OpenReply)
     }
-    const handleOpenReply = ()=>{
+    const handleOpenReply = (e)=>{
+        e.preventDefault()
         setOpenReply(!OpenReply);
     }
    /* const updateChildNumber = (number)=>{
@@ -41,6 +42,7 @@ function SingleComment(props) {
         setOpenReplyComment(!OpenReplyComment);
     }*/
     const deleteComment = (productId,commentId) =>{
+        
         let variable={
             productId:productId,
             commentId:commentId
@@ -53,8 +55,8 @@ function SingleComment(props) {
     // const viewReplyComment = ChildNumber >0 && [<span onClick={openReplyComment}>답글 {ChildNumber}개 보기</span>]
     const actions =[
       <LikeDisLike comment commentId={props.comment._id} userTo={props.writer}/>,
-      <span onClick={handleOpenReply}> 답글 달기</span>,
-      props.writer===props.comment.writer._id && props.comment.content !=='삭제된 댓글 입니다' ? <Button onClick={()=>deleteComment(props.productId,props.comment._id)}>삭제</Button> :''
+      <Button style={{margin:'8px',fontSize:'12px'}}onClick={handleOpenReply}> 답글 달기</Button>,
+      props.writer===props.comment.writer._id && props.comment.content !=='삭제된 댓글 입니다' ? <Button style={{fontSize:'12px'}}onClick={()=>deleteComment(props.productId,props.comment._id)}>삭제</Button> :''
       ]
   
         
