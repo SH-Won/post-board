@@ -183,7 +183,7 @@ function LikeDisLike(props) {
 
        }
     return (
-        <div style={{display:'flex',justifyContent:'center',fontSize:'24px',border:'1px solid gray',margin:'4rem auto'}}>
+        <div style={{display:'flex',justifyContent:'center',margin:'4px'}}>
             <span key="comment-basic-like">
                 <Tooltip title="Like">
                     <Icon type="like"

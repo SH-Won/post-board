@@ -20,9 +20,9 @@ function ProductImage(props) {
 
     },[props.detail])
     return (
-        <div style={{}}>
+        <div style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
             <div >
-            <ImageGallery style={{maxHeight:'350px'}} items={Images}/>
+            <ImageGallery items={Images}/>
             </div>
         </div>
     )

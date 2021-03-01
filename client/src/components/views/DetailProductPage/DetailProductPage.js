@@ -7,6 +7,7 @@ import {getProductDetail} from '../../../_actions/product_actions';
 import {getComments} from '../../../_actions/comment_actions';
 import LikeDisLike from './Section/LikeDisLike';
 import Comments from './Section/Comment/Comments';
+import Board from './Section/Board';
 
 function DetailProductPage(props) {
 
@@ -23,6 +24,7 @@ function DetailProductPage(props) {
             productId:productId
         }
         dispatch(getComments(variable))
+        
 
     },[])
     console.log(productId)
@@ -37,6 +39,7 @@ function DetailProductPage(props) {
             </div>
             <br/><br/>
             <div style={{ maxHeight:'400px'}}>
+                <Board />
            <Row gutter={[16,16]}>
                <Col lg={12} xs={24}>
                   <ProductImage detail={product}/>
@@ -47,7 +50,7 @@ function DetailProductPage(props) {
            </Row>
            </div>
            <Row gutter={[16,16]}>
-           <Col lg={24} >
+           <Col xs={24} >
                <div style={{alignItems:'center'}}>
                <LikeDisLike product productId={productId} userTo={userTo}/> 
                <Comments  commentList={comments} productId={productId}/>

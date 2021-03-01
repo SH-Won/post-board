@@ -29,6 +29,7 @@ function CheckBox(props) {
             checked={Checked.indexOf(value._id) === -1 ? false:true}
         />&nbsp;&nbsp;
         <span>{value.name}</span>
+         &nbsp;&nbsp;&nbsp;
         </React.Fragment>
     ))
 

@@ -42,14 +42,11 @@ function ReplyComment(props) {
     return (
         <div>
             {ChildNumber >0 &&
-            <>
-            <span style={{margin:0}} onClick={handleOpenReply}>답글 {ChildNumber}개 보기</span>
-            <hr/>
-            </>
+            <p style={{marginBottom:'10px'}} onClick={handleOpenReply}>답글 {ChildNumber}개 보기</p>
             } 
             
             {OpenReply &&
-            <div style={{border:'1px solid gray',borderRadius:'4px'}}>
+            <div style={{}}>
             {renderComment(props.parentCommentId)}
             </div>
             }
