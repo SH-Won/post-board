@@ -11,7 +11,7 @@ const EditImage = ({originalImages,onDrop,
              <Dropzone
                onDrop={onDrop}
                multiple={true}
-               maxSize={800000000}
+               maxSize={8000000}
                >
                  {({getRootProps,getInputProps})=>(
                      <div className='input_img'

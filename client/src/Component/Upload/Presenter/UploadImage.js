@@ -5,26 +5,26 @@ const UploadImage = ({onDrop,Files,FileURL,deletePreview})=> {
     
   //  console.log(FileURL)
     return (
-        <div className="input_container">
+        <div className="upload_container">
              <Dropzone
                onDrop={onDrop}
                multiple={true}
-               maxSize={8000000000}
+               maxSize={8000000}
 
                >
                  {({getRootProps,getInputProps})=>(
-                     <div className="input_item" 
+                     <div className="input_img" 
                      {...getRootProps()}>
                          <input {...getInputProps()}/>
                          <Icon type="plus" style={{fontSize:'3rem'}} />
                      </div>
                  )}  
                </Dropzone>
-               <div className="inputed_item" >
+               <div className="total_img_container" >
                   
                   {FileURL && FileURL.map((image,index)=>(
-                      <div key={index} onClick={()=>deletePreview(image)}>
-                      <img src={image} className="inputed_item_image"/>
+                      <div className="original_img_container" key={index} onClick={()=>deletePreview(image)}>
+                      <img src={image} className="original_img"/>
                       </div>
                   ))}
                  
