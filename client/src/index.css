@@ -1,8 +1,16 @@
 @import "~react-image-gallery/styles/css/image-gallery.css";
+@import '~antd/dist/antd.css';
 
-.image-gallery {
-  width: 75%;
+html{
+  -ms-content-zoom-chaining: none;
+  -ms-touch-action: pan-x pan-y;
 }
+.paging :hover {
+  transform: scale(1.2);
+  cursor: pointer;
+  outline: auto;
+}
+
 
 body {
   margin: 0;
@@ -25,6 +33,29 @@ body {
   line-height: 1.5;
   color: #24292e;
   background-color: #fff;
+}
+body {
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+
+/*
+.favorite_menu .item:hover{
+    cursor: pointer;
+    background-color: #3b5998;
+    
+}
+*/
+.favorite_menu .item:visited{
+  
+  background-color:#3b5998;
+}
+
+.favorite_menu li:active{
+  color:#3b5998
 }
 
 .app {
@@ -57,4 +88,9 @@ th {
 }
 tr:nth-child(even) {
   background-color: #dddddd;
+}
+
+.page_list:hover{
+  cursor: pointer;
+  background-color: #3b5998;
 }

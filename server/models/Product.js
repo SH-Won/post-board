@@ -26,14 +26,22 @@ const productSchema = mongoose.Schema({
         default:1
     },
     sold:{
-        type:Number,
+        type:Number, 
         maxlength:100,
         default:0
     },
     views:{
         type:Number,
         default:0
+    },
+    likeUser:{
+        type:Array,
+    },
+    disLikeUser:{
+        type:Array
     }
+
+
     
 },{timestamps:true})
 

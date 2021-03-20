@@ -4,6 +4,7 @@ import {
     REGISTER_USER,
     AUTH_USER,
     LOGOUT_USER,
+    RECENTLY_VIEW_USER
 } from './types';
 import { USER_SERVER } from '../components/Config.js';
 
@@ -44,6 +45,16 @@ export function logoutUser(){
     return {
         type: LOGOUT_USER,
         payload: request
+    }
+}
+
+export function recentlyView(variable){
+    const request =axios.post('/api/product/recentlyView',variable)
+    .then(response=>response.data.views)
+
+    return {
+        type:RECENTLY_VIEW_USER,
+        payload:request
     }
 }
 

@@ -5,10 +5,39 @@ import {
     UP_LIKE,
     DOWN_LIKE,
     UP_DISLIKE,
-    DOWN_DISLIKE
+    DOWN_DISLIKE,
+    GET_LIKE
 
 } from './types';
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export  function getLike(variable){
+  /*  let variable={
+        userTo:user
+    }
+   */
+    const request =  axios.post('/api/likeDisLike/getFavoriteProduct',variable)
+    .then(response=>response.data)
+
+    return{
+        type:GET_LIKE,
+        payload:request
+    }
+}
 export function getLikeInfo(variable){
 
    

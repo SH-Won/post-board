@@ -2,8 +2,24 @@ const express = require('express');
 const router = express.Router();
 const { Like } = require("../models/Like");
 const { DisLike } = require("../models/DisLike");
+const {Comment} = require('../models/Comment');
 
 
+
+
+router.post('/getFavoriteProduct',(req,res)=>{
+    Like.find({userTo:req.body.userTo})
+    .populate('productId')
+    .exec((err,likes)=>{
+        if(err) return res.json({success:false,err})
+
+       //filter를 이용해서 commentId 와 productId 중 productId만 가져옴
+        let result = likes.filter(like=> like.productId)
+        
+        res.status(200).json({success:true, result})
+        
+    })
+})
 
 router.post('/getLikeInfo',(req,res)=>{
     let variable={}
@@ -20,7 +36,7 @@ router.post('/getLikeInfo',(req,res)=>{
 
     
         res.json({success:true,likes})
-        console.log(likes)
+        //console.log(likes)
         
     })
 })

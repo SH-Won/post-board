@@ -7,7 +7,7 @@ router.post('/saveComment',(req,res)=>{
     const comment = new Comment(req.body)
     comment.save((err,comments)=>{
         if(err) res.json({success:false,err})
-        Comment.find({_id:comments._id})
+        Comment.find({'_id':comments._id})
         .populate('writer')
         .exec((err,comment)=>{
             if(err) res.json({success:false,err})
@@ -37,6 +37,74 @@ router.post('/deleteComment',(req,res)=>{
     })
 
 })
+
+router.post('/upLikeUser',(req,res)=>{
+    Comment.findOneAndUpdate({_id:req.body.commentId},
+        {$push:{likeUser:req.body.user},$pull:{disLikeUser:req.body.user}})
+        //{$pull:{'disLikeUser':req.body.user}})
+        .exec((err,result)=>{
+            if(err) return res.json({success:false,err})
+            Comment.find({productId:req.body.productId})
+            .populate('writer')
+            .exec((err,comments)=>{
+                if(err) return res.json({success:false,err})
+                res.status(200).json({success:true,comments})
+                console.log(comments)
+            })
+        })
+
+})
+router.post('/downLikeUser',(req,res)=>{
+    Comment.findOneAndUpdate({_id:req.body.commentId},
+        {$pull:{likeUser:req.body.user}})
+        .exec((err,result)=>{
+            if(err) return res.json({success:false,err})
+            Comment.find({productId:req.body.productId})
+            .populate('writer')
+            .exec((err,comments)=>{
+                if(err) return res.json({success:false,err})
+                res.status(200).json({success:true,comments})
+                console.log(comments)
+            })
+        })
+})
+
+router.post('/upDisLikeUser',(req,res)=>{
+    Comment.findOneAndUpdate({_id:req.body.commentId},
+        {$push:{disLikeUser:req.body.user},$pull:{likeUser:req.body.user}})
+        
+        .exec((err,result)=>{
+            if(err) return res.json({success:false,err})
+            Comment.find({productId:req.body.productId})
+            .populate('writer')
+            .exec((err,comments)=>{
+                if(err) return res.json({success:false,err})
+                res.status(200).json({success:true,comments})
+                console.log(comments)
+            })
+        })
+
+})
+router.post('/downDisLikeUser',(req,res)=>{
+    Comment.findOneAndUpdate({_id:req.body.commentId},
+        {$pull:{disLikeUser:req.body.user}})
+        .exec((err,result)=>{
+            if(err) return res.json({success:false,err})
+            Comment.find({productId:req.body.productId})
+            .populate('writer')
+            .exec((err,comments)=>{
+                if(err) return res.json({success:false,err})
+                res.status(200).json({success:true,comments})
+                console.log(comments)
+            })
+        })
+})
+
+
+
+
+
+
 
 
 

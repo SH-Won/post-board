@@ -6,14 +6,19 @@ import {
     UP_LIKE,
     DOWN_LIKE,
     UP_DISLIKE,
-    DOWN_DISLIKE
+    DOWN_DISLIKE,
+    GET_LIKE
     
 }
 from '../_actions/types'
 
 
-export default function(state={likes:[],disLikes:[]},action){
+export default function(state={likes:[],disLikes:[],favorited_products:[]},action){
     switch(action.type){
+        case GET_LIKE :
+            return{
+               ...state,  favorited_products:[...action.payload.result]
+            }
         case GET_LIKE_INFO :
             return{
                 ...state, 

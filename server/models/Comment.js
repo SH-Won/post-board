@@ -14,6 +14,12 @@ const CommentSchema = mongoose.Schema({
    },
    responseTo:{
        type:String
+   },
+   likeUser:{
+       type:Array
+   },
+   disLikeUser:{
+       type:Array
    }
 
 },{timestamps:true})
