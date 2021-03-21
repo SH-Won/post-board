@@ -2,13 +2,13 @@ import React from 'react'
 import {Carousel} from 'antd';
 
 const ImageSlider = ({images,SelectedImage,selectImage}) => {
-    
+    //`http://192.168.0.92:5000/${image}`
     const renderImagePlay = images && 
     <Carousel autoplay>
                 {images && images.map((image,index)=>(
                     <div key={index}>
                         <img style={{width:'100%',height:'350px'}}
-                           src={`http://192.168.0.92:5000/${image}`} alt="product Image"/>
+                           src={`http://localhost:5000/${image}`} alt="product Image"/>
                     </div>
                 ))}
             </Carousel>
@@ -20,7 +20,7 @@ const ImageSlider = ({images,SelectedImage,selectImage}) => {
                 <div>
                     {SelectedImage && 
                     <div className="selected_img">
-                    <img src={`http://192.168.0.92:5000/${SelectedImage}`} />
+                    <img src={`http://localhost:5000/${SelectedImage}`} />
                     </div>
                     }
                     <div className="select_img">
