@@ -8,7 +8,7 @@ const ImageSlider = ({images,SelectedImage,selectImage}) => {
                 {images && images.map((image,index)=>(
                     <div key={index}>
                         <img style={{width:'100%',height:'350px'}}
-                           src={`http://localhost:5000/${image}`} alt="product Image"/>
+                           src={image} alt="product Image"/>
                     </div>
                 ))}
             </Carousel>
@@ -20,13 +20,13 @@ const ImageSlider = ({images,SelectedImage,selectImage}) => {
                 <div>
                     {SelectedImage && 
                     <div className="selected_img">
-                    <img src={`http://localhost:5000/${SelectedImage}`} />
+                    <img src={`${SelectedImage}`} />
                     </div>
                     }
                     <div className="select_img">
                     {images && images.map((image,index)=>(
                         <div className='img_container' key={index} >
-                        <img className={SelectedImage === image ? 'choosed_img':'choose_img'}  onClick={()=>selectImage(image)} src={`http://192.168.0.92:5000/${image}`} />
+                        <img className={SelectedImage === image ? 'choosed_img':'choose_img'}  onClick={()=>selectImage(image)} src={`${image}`} />
                         </div>
                     ))}
                     </div>

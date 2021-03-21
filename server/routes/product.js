@@ -2,10 +2,17 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const gm =require('gm');
+const cloudinary = require('cloudinary');
+const cloudinaryStorage = require('multer-storage-cloudinary');
 
 const { Product } = require("../models/Product");
 const {View} = require('../models/View');
 const { auth } = require("../middleware/auth");
+
+
+
+
+
 
 
 let storage = multer.diskStorage({
@@ -30,7 +37,7 @@ router.post('/previewFiles',(req,res)=>{
 })
 
 const upload =multer({storage:storage}).array("file");
-console.log(storage.getDestination)
+
 //=================================
 //             Video
 //=================================
@@ -42,24 +49,36 @@ router.post('/uploadfiles',auth,(req,res)=>{
         if(err){ return res.json({success : false , err})
     }
        
-       let urlData =[];
-       let nameData =[];
-       //console.log(req.files)
-       //console.log(res)
-       req.files.forEach(file=>{
-          /* gm(`${file.path}`)
-           .resize(200,175)
-           .write(`${file.path}`,(err)=>{
-               if(err) console.log(err)
-               console.log('done')
-           })
-           */
-           urlData.push(file.path);
-           nameData.push(file.filename)
+    const cloudinary =require('cloudinary').v2
+       cloudinary.config({
+        cloud_name:'dhjegsbqv',
+        api_key:'849556649919811',
+        api_secret:'BWYDsBBg6F4FP07xYqs1lORdWOk'
+    })
+
+    let urlData =[];
+    let nameData =[];
+    
+
+      req.files.forEach(file=>{
+         
+          const path = file.path;
+          cloudinary.uploader.upload(path,(err,image)=>{
+              if(err) return res.send(err)
+            
+              urlData.push(image.url)
+            
+        
+              if(Number(req.files.indexOf(file)) === Number(req.files.length -1) )
+              res.json({success:true , url:urlData})
+                
+          })
+          
        })
        
+       
 
-        return res.json({success:true , url:urlData, fileName:nameData})
+       // return res.json({success:true , url:urlData})
     })
     
 

@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const cloudinary = require('cloudinary');
+const cloudinaryStorage = require('multer-storage-cloudinary');
 const cors = require('cors')
 
 const bodyParser = require("body-parser");

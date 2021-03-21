@@ -10,7 +10,7 @@ const RecentView = ({userRecentView}) => {
             style={{margin:'16px', padding:'16px',
                     border:'0.1px solid gray',borderRadius:'16px',
                     alignItems:'center'}}>
-            <a href={`/product/${view._id}`}><img style={{maxWidth:'300px',height:'200px'}}src={`http://192.168.0.92:5000/${view.images[0]}`}/></a>
+            <a href={`/product/${view._id}`}><img style={{maxWidth:'300px',height:'200px'}}src={`${view.images[0]}`}/></a>
                 <span style={{fontSize:'10x',color:'darkgray'}}>{view.title}</span>
             </div>
         ))

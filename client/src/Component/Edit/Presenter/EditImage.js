@@ -24,7 +24,7 @@ const EditImage = ({originalImages,onDrop,
                <div className='total_img_container'>
                   {originalImages && originalImages.map((image,index)=>(
                        <div className='original_img_container'key={index} onClick={()=>deleteOriginalImage(image)} >
-                       <img className='original_img' src={`http://192.168.0.92:5000/${image}`} />
+                       <img className='original_img' src={image} />
                        </div>
                   ))}
                   {FileURL && FileURL.map((image,index)=>(
