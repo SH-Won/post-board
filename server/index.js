@@ -17,11 +17,14 @@ const config = require("./config/key");
 //   .then(() => console.log("DB connected"))
 //   .catch(err => console.error(err));
 
+//config.mongoURI
+const mongoURI=process.env.MONGO_URI;
 const mongoose = require("mongoose");
-const connect = mongoose.connect(config.mongoURI,
+const connect = mongoose.connect(mongoURI,
   {
     useNewUrlParser: true, useUnifiedTopology: true,
-    useCreateIndex: true, useFindAndModify: false
+    useCreateIndex: true, useFindAndModify: false,
+    useMongoClient:true
   })
   .then(() => console.log('데이터베이스 연결!'))
   .catch(err => console.log(err));
@@ -63,5 +66,5 @@ if (process.env.NODE_ENV === "production") {
 const port = process.env.PORT || 5000
 
 app.listen(port, () => {
-  console.log(`서버 연결! 포트: ${port} 몽고디비 : ${config.mongoURI}`)
+  console.log(`서버 연결! 포트: ${port} 몽고디비 : ${mongoURI}`)
 });
