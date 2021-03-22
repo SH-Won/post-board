@@ -2,16 +2,37 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const gm =require('gm');
-const cloudinary = require('cloudinary');
-const cloudinaryStorage = require('multer-storage-cloudinary');
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const config = require("../config/key");
 
 const { Product } = require("../models/Product");
 const {View} = require('../models/View');
 const { auth } = require("../middleware/auth");
 
+cloudinary.config({
+       
+    cloud_name:config.cloud_name,
+    api_key:config.api_key,
+    api_secret:config.api_secret
+})
 
 
 
+const Storage = new CloudinaryStorage({
+    cloudinary:cloudinary,
+    params:{
+       // folder:'uploads',
+        format: async (req,file)=>{
+            "jpg","png","gif";
+        },
+        public_id:(req,file)=>{
+
+        }        
+    }
+})
+
+const parser = multer({storage:Storage}).array('file');
 
 
 
@@ -32,57 +53,67 @@ let storage = multer.diskStorage({
     
 });
 
-router.post('/previewFiles',(req,res)=>{
-    
-})
 
-const upload =multer({storage:storage}).array("file");
+//const upload =multer({storage:Storage}).array("file");
 
 //=================================
 //             Video
 //=================================
-router.post('/uploadfiles',auth,(req,res)=>{
+router.post('/uploadfiles',(req,res)=>{
     //클라이언트에서 받은 비디오를 서버에 저장한다.
     
-    
-    upload(req,res,err=>{
+   // req.files.forEach(file=>console.log(file));
+/*
+   {
+    [0]   fieldname: 'file',
+    [0]   originalname: 'KakaoTalk_20210221_232207983.jpg',
+    [0]   encoding: '7bit',
+    [0]   mimetype: 'image/jpeg',
+    [0]   path: 'https://res.cloudinary.com/dhjegsbqv/image/upload/v1616346857/gklot7mqu595ujmsb4ns.jpg',
+    [0]   size: 62348,
+    [0]   filename: 'gklot7mqu595ujmsb4ns'
+    [0] }
+*/
+
+    parser(req,res,err=>{
+        
+        /* cloud_name:'dhjegsbqv',
+        api_key:'849556649919811',
+        api_secret:'BWYDsBBg6F4FP07xYqs1lORdWOk'*/
         if(err){ return res.json({success : false , err})
     }
-       
+     /*  
     const cloudinary =require('cloudinary').v2
        cloudinary.config({
-        cloud_name:'dhjegsbqv',
-        api_key:'849556649919811',
-        api_secret:'BWYDsBBg6F4FP07xYqs1lORdWOk'
+       
+        cloud_name:config.cloud_name,
+        api_key:config.api_key,
+        api_secret:config.api_secret
     })
+    */
+    //req.files.forEach(file=> console.log(file));
 
     let urlData =[];
     let nameData =[];
     
-
       req.files.forEach(file=>{
-         
-          const path = file.path;
+          console.log(file);
+         urlData.push(file.path);
+          /*const path = file.path;
           cloudinary.uploader.upload(path,(err,image)=>{
-              if(err) return res.send(err)
-            
+              if(err) return res.send(err)   
               urlData.push(image.url)
-            
-        
               if(Number(req.files.indexOf(file)) === Number(req.files.length -1) )
-              res.json({success:true , url:urlData})
-                
+              res.json({success:true , url:urlData})     
           })
-          
+          */
+
        })
-       
-       
-
-       // return res.json({success:true , url:urlData})
+        return res.json({success:true , url:urlData})
     })
-    
-
 })
+
+
 router.post('/deletefiles',auth,(req,res)=>{
     //클라이언트에서 받은 비디오를 서버에 저장한다.
     upload(req,res,err=>{
