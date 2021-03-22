@@ -19,7 +19,7 @@ const config = require("./config/key");
 
 //config.mongoURI
 
-const mongoURI = process.env.MONGO_URI || config.mongoURI;
+const mongoURI = process.env.mongoURI || config.mongoURI;
 
 require('dotenv').config();
 const mongoose = require("mongoose");
@@ -69,5 +69,5 @@ if (process.env.NODE_ENV === "production") {
 const port = process.env.PORT || 5000
 
 app.listen(port, () => {
-  console.log(`서버 연결! 포트: ${port} 몽고디비 : ${config.mongoURI}`)
+  console.log(`서버 연결! 포트: ${port} 몽고디비 : `)
 });

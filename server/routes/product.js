@@ -10,9 +10,9 @@ const { Product } = require("../models/Product");
 const {View} = require('../models/View');
 const { auth } = require("../middleware/auth");
 
-const cloud_name=process.env.CLOUD_NAME || config.cloud_name
-const api_key=process.env.API_KEY || config.api_key
-const api_secret=process.env.API_SECRET || config.api_secret
+const cloud_name=process.env.cloud_name || config.cloud_name
+const api_key=process.env.api_key || config.api_key
+const api_secret=process.env.api_secret || config.api_secret
 cloudinary.config({
        
     /*cloud_name:config.cloud_name,
@@ -20,9 +20,11 @@ cloudinary.config({
     api_secret:config.api_secret
 
     */
+
    cloud_name:cloud_name,
    api_key:api_key,
    api_secret:api_secret
+   
     
 })
 
