@@ -27,7 +27,7 @@ const connect = mongoose.connect(config.mongoURI,
   .catch(err => console.log(err));
 
 app.use(cors())
-console.log(config.mongoURI);
+
 //to not get any deprecation warning or error
 //support parsing of application/x-www-form-urlencoded post data
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -63,5 +63,5 @@ if (process.env.NODE_ENV === "production") {
 const port = process.env.PORT || 5000
 
 app.listen(port, () => {
-  console.log(`서버 연결! 포트: ${port}`)
+  console.log(`서버 연결! 포트: ${port} 몽고디비 : ${config.mongoURI}`)
 });
