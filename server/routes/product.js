@@ -12,9 +12,13 @@ const { auth } = require("../middleware/auth");
 
 cloudinary.config({
        
-    cloud_name:config.cloud_name,
+    /*cloud_name:config.cloud_name,
     api_key:config.api_key,
     api_secret:config.api_secret
+    */
+    cloud_name:'dhjegsbqv',
+    api_key:'849556649919811',
+    api_secret:'BWYDsBBg6F4FP07xYqs1lORdWOk'
 })
 
 
