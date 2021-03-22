@@ -67,5 +67,5 @@ if (process.env.NODE_ENV === "production") {
 const port = process.env.PORT || 5000
 
 app.listen(port, () => {
-  console.log(`서버 연결! 포트: ${port} 몽고디비 : ${config.mongoURI} success`)
+  console.log(`서버 연결! 포트: ${port} 몽고디비 : ${config.mongoURI}`)
 });
