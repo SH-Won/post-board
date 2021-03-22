@@ -21,7 +21,7 @@ const config = require("./config/key");
 
 require('dotenv').config();
 const mongoose = require("mongoose");
-const connect = mongoose.connect(config.mongoURI,
+const connect = mongoose.connect('mongodb+srv://mom:wlfkfqud1@mall.5enkd.mongodb.net/mom?retryWrites=true&w=majority',
   {
     useNewUrlParser: true, useUnifiedTopology: true,
     useCreateIndex: true, useFindAndModify: false
