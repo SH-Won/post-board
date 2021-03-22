@@ -10,15 +10,20 @@ const { Product } = require("../models/Product");
 const {View} = require('../models/View');
 const { auth } = require("../middleware/auth");
 
+const cloud_name=process.env.CLOUD_NAME || config.cloud_name
+const api_key=process.env.API_KEY || config.api_key
+const api_secret=process.env.API_SECRET || config.api_secret
 cloudinary.config({
        
     /*cloud_name:config.cloud_name,
     api_key:config.api_key,
     api_secret:config.api_secret
+
     */
-    cloud_name:'dhjegsbqv',
-    api_key:'849556649919811',
-    api_secret:'BWYDsBBg6F4FP07xYqs1lORdWOk'
+   cloud_name:cloud_name,
+   api_key:api_key,
+   api_secret:api_secret
+    
 })
 
 
@@ -81,10 +86,7 @@ router.post('/uploadfiles',(req,res)=>{
 
     parser(req,res,err=>{
         
-        /* cloud_name:'dhjegsbqv',
-        api_key:'849556649919811',
-        api_secret:'BWYDsBBg6F4FP07xYqs1lORdWOk'*/
-        if(err){ return res.json({success : false , err})
+          if(err){ return res.json({success : false , err})
     }
      /*  
     const cloudinary =require('cloudinary').v2
