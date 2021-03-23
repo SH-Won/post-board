@@ -21,9 +21,9 @@ cloudinary.config({
 
     */
 
-   cloud_name:cloud_name,
-   api_key:api_key,
-   api_secret:api_secret
+   cloud_name:config.cloud_name,
+   api_key:config.api_key,
+   api_secret:config.api_secret
    
     
 })
@@ -80,7 +80,7 @@ router.post('/uploadfiles',(req,res)=>{
     [0]   originalname: 'KakaoTalk_20210221_232207983.jpg',
     [0]   encoding: '7bit',
     [0]   mimetype: 'image/jpeg',
-    [0]   path: 'https://res.cloudinary.com/dhjegsbqv/image/upload/v1616346857/gklot7mqu595ujmsb4ns.jpg',
+    [0]   
     [0]   size: 62348,
     [0]   filename: 'gklot7mqu595ujmsb4ns'
     [0] }

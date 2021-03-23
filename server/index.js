@@ -19,11 +19,11 @@ const config = require("./config/key");
 
 //config.mongoURI
 
-const mongoURI = process.env.mongoURI || config.mongoURI;
+//const mongoURI = process.env.mongoURI || config.mongoURI;
 
 require('dotenv').config();
 const mongoose = require("mongoose");
-const connect = mongoose.connect(mongoURI,
+const connect = mongoose.connect(config.mongoURI,
   {
     useNewUrlParser: true, useUnifiedTopology: true,
     useCreateIndex: true, useFindAndModify: false
