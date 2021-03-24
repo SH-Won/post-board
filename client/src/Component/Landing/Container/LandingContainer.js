@@ -23,7 +23,7 @@ const LandingContainer = () => {
     const writer = {...user};
     
     
-
+     
     useEffect(()=>{
         dispatch(getFirstProduct(Skip,Limit,Filters,SearchValue))
         
@@ -47,6 +47,7 @@ const LandingContainer = () => {
         setSkip(skip)
         
         
+        
        
     }
     const categoryToggle=(value)=>{
@@ -56,7 +57,7 @@ const LandingContainer = () => {
             CheckedArray.push(value)
         }
         else{
-        CheckedArray.splice(valueIndex)
+        CheckedArray.splice(valueIndex,1)
         }
         setChecked(CheckedArray)
         filterHandler(CheckedArray,'category')

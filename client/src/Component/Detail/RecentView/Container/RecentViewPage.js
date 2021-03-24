@@ -2,6 +2,7 @@ import React,{useEffect} from 'react'
 import {useSelector,useDispatch} from 'react-redux';
 import {recentlyView} from '../../../../_actions/user_actions'
 import RecentView from '../Presenter/RecentView';
+import '../Presenter/RecentView.css';
 const RecentViewPage = ({productId,writer}) => {
     const dispatch = useDispatch();
 
@@ -14,7 +15,7 @@ const RecentViewPage = ({productId,writer}) => {
      writer && dispatch(recentlyView(variable))
         
     },[writer])
-    console.log(writer)
+    //console.log(writer)
     const userView = useSelector(state=>state.user.views);
     const userRecentView = userView.map(view => view.product)
    

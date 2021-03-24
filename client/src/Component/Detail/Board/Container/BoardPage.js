@@ -16,7 +16,13 @@ const BoardPage = ({productId}) => {
 
     },[])
     const products = useSelector(state=>state.upload.products)
-    
+   
+    /*const {products,board_products}=useSelector(state=>({
+            products:state.upload.products,
+            board_products:state.upload.boardProducts
+    }),[])
+    */
+
     useEffect(()=>{
         let products_length = products.length; // 41 이라면
         let page_length = Math.ceil(products_length/Limit) // 41/4 에서 올림

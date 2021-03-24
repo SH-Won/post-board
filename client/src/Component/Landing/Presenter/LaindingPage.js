@@ -2,6 +2,8 @@ import React from 'react'
 import {Button,Row,Col,Card} from 'antd'
 import ImageSlider from './ImageSlider'
 const {Meta}=Card;
+
+
 const LaindingPage = ({writer,removeProduct,products,postSize,loadMoreItems,Limit}) => {
     const renderCard = 
     products.length >0 && products.map((product,index)=>{
@@ -21,6 +23,7 @@ const LaindingPage = ({writer,removeProduct,products,postSize,loadMoreItems,Limi
              </Card>
             </Col>
         })
+        
 
         const mouseOver = (description) =>{
             
@@ -29,14 +32,15 @@ const LaindingPage = ({writer,removeProduct,products,postSize,loadMoreItems,Limi
                 </div>
             
         }
+         
     return (
-        <div style={{width:'90vw' ,margin:'1rem auto'}}>
+        <div style={{width:'90vw' ,margin:'1rem auto',justifyContent:'center'}}>
         
-        <br/><br/>
+        
         <div style={{display:'flex',justifyContent:'flex-end',margin:'1rem auto'}}>
        
         </div>
-        <br/><br/>
+        
        {/* {products.length ===0 ? 
        <div>게시글을 불러오는 중입니다</div> :
         <Row gutter={[16,16]}> 
@@ -52,8 +56,9 @@ const LaindingPage = ({writer,removeProduct,products,postSize,loadMoreItems,Limi
         <a href={`product/${product._id}`}><ImageSlider images={product.images}/></a>
         <ul className="product_explain">
             <li className="explain_item">{product.title}</li>
-            <li className="explain_item">작성자 {product.writer.name}</li>
+            <li className="explain_item">작성자 : {product.writer.name}</li>
             <li className="explain_item">분류 {product.category}</li>
+            <li className="explain_item">{product.createdAt}</li>
         </ul> 
     </div>
       ))}

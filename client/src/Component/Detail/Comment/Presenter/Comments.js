@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect} from "react";
 import { Row, Col, Form, Button, Input } from "antd";
 import SingleComment from "./SingleComment";
 import ReplyComment from "./ReplyComment";

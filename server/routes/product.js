@@ -473,10 +473,11 @@ router.post('/removeProduct',(req,res)=>{
         if(err) return res.json({success:false,err})
         
 
-        View.findOneAndDelete({userTo:req.body.userTo,product:req.body.productId})
+        View.deleteMany({product:req.body.productId})
         .exec((err,result)=>{
             if(err) return res.json({success:false,err})
             res.json({success:true})
+            console.log(result)
         })
     })
    
